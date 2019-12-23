@@ -11,11 +11,12 @@ class Movies extends Component {
     }
     render() {
         return (
+            //make sure you actually place your .map into a holding container and not an empty one dumb dumb
             <div>
-            {this.props.moviesRedux.map( (item) => {
-                return (
-                    <MovieDetails key ={item.id} item={item} />
-            )})}
+                {this.props.moviesRedux.map( (item) => {
+                    return (
+                        <MovieDetails key ={item.id} item={item} />
+                )})}
             </div>
         )
     }

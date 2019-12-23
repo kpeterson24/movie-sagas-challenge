@@ -5,8 +5,8 @@ import {withRouter} from 'react-router-dom';
 
 class MovieDetails  extends Component {
     handleDetailsClick = () => {
-        this.props.dispatch({ type: `S` })
-        this.props.history.push('/details/' + this.props.item.id)
+        this.props.dispatch({ type: `MOVIE_DETAILS`, payload: this.props.item.id });
+        this.props.history.push('/details/' + this.props.item.id);
     }
     render() {
 
