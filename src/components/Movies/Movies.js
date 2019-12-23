@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
+import MovieDetails from '../MovieDetails/MovieDetails';
 
 
 class Movies extends Component {
@@ -14,10 +15,10 @@ class Movies extends Component {
             {this.props.moviesRedux.map( (item) => {
                 return (
                     <>
-                    <li key ={item.id} item={item}>
-                        {JSON.stringify(this.props.moviesRedux)}
-                        {this.props.moviesRedux}
-                    </li>
+                
+                        {/* {JSON.stringify(this.props.moviesRedux)} */}
+                        <MovieDetails key ={item.id} item={item} />
+                
                     </>
             )})}
             </>
@@ -30,4 +31,5 @@ const  mapReduxStateToProps = reduxState => ({
     moviesRedux: reduxState.movies
 })
 
-export default withRouter(connect(mapReduxStateToProps) (Movies) );
+// export default withRouter(connect(mapReduxStateToProps) (Movies) );
+export default connect(mapReduxStateToProps) (Movies);
