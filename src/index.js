@@ -17,7 +17,7 @@ import {takeEvery, put} from 'redux-saga/effects';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery( 'GET_MOVIES', getMoviesSaga )
-
+    // yield takeEvery( '', getMovieDetails )
 }
 
 // Create sagaMiddleware
@@ -31,6 +31,11 @@ function* getMoviesSaga() {
     } catch(error) {
         console.log(error);
     }
+}
+
+// GET specific movie id when click on movie poster
+function* getMovieDetails(){
+
 }
 
 // Used to store movies returned from the server
