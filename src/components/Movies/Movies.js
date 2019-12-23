@@ -11,17 +11,12 @@ class Movies extends Component {
     }
     render() {
         return (
-            <>
+            <div>
             {this.props.moviesRedux.map( (item) => {
                 return (
-                    <>
-                
-                        {/* {JSON.stringify(this.props.moviesRedux)} */}
-                        <MovieDetails key ={item.id} item={item} />
-                
-                    </>
+                    <MovieDetails key ={item.id} item={item} />
             )})}
-            </>
+            </div>
         )
     }
 
