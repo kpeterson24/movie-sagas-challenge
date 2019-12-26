@@ -3,6 +3,8 @@ import './App.css';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import Movies from '../Movies/Movies';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import EditDetails from '../EditDetails/EditDetails';
+
 
 class App extends Component {
   // Renders the entire app on the DOM
@@ -11,13 +13,13 @@ class App extends Component {
       <div className="App">
         <h1>Movie time!</h1>
           <Router>
-              <Route exact path='/'> <Movies  /> </Route>
-              <Route path='/details/:movieId'> <MovieDetails  /> </Route>
-
+              <Route exact path='/' component={Movies} />
+              <Route path='/details' component={MovieDetails} /> 
+              <Route path='/edit' component={EditDetails} />
           </Router>
        
       </div>
-    );
+    )
   }
 }
 
