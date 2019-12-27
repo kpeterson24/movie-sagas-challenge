@@ -18,8 +18,8 @@ router.get(`/:id`, (req, res) =>{
     let queryText = `
         SELECT "genres"."name"
         FROM "movies"
-        JOIN "movies-and-genres" ON "movies-and-genres"."movie_Id" = "movies"."id"
-        JOIN "genres" ON "genres"."id" = "movies-and-genres"."genre_Id"
+        JOIN "movies_and_genres" ON "movies_and_genres"."movie_id" = "movies"."id"
+        JOIN "genres" ON "genres"."id" = "movies_and_genres"."genre_id"
         WHERE "movies"."id" = $1;`;
     pool.query(queryText, id)
     .then( (result) => {
@@ -42,12 +42,6 @@ router.get(`/:id`, (req, res) =>{
         res.sendStatus(500);
     });
 })
-
-
-
-
-//will eventually need to put another get here when clicking Movie poster to grab its details by as parameter( probably by id. )
-
 
 
 module.exports = router;

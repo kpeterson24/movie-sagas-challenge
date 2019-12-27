@@ -14,7 +14,7 @@ class MovieDetails  extends Component {
         return(
             
             <div>
-                {/* {JSON.stringify(this.props.reduxStore.movies.title)} */}
+                {/* {JSON.stringify(this.props.reduxStore.movies)} */}
                 <h2>{this.props.item.title}</h2> 
                 <Link to="/details">
                 <img alt= {this.props.item.title} src= {this.props.item.poster} 
@@ -23,7 +23,6 @@ class MovieDetails  extends Component {
                 <h3>Movie Description</h3>
                 <p>{this.props.item.description}</p>
             </div>
-            
         )
     }
 

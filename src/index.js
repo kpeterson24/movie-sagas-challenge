@@ -31,7 +31,7 @@ function* rootSaga() {
 // GET Movies from the DB
 function* getMoviesSaga() {
     try{
-        const response = yield axios.get(`/movies`);
+        const response = yield axios.get('/movies');
         yield put({ type: 'SET_MOVIES', payload: response.data })
     } catch(error) {
         console.log(error);
@@ -55,7 +55,7 @@ function* getDetailsSaga(action) {
 function* getGenresSaga(action) {
     let id = action.payload.id;
     try{
-        const response = yield axios.get(`/genres/${id}`);
+        const response = yield axios.get(`/movies/${id}`);
         yield put({type: 'SET_GENRES', payload: response.data })
     }
     catch ( error ) {
