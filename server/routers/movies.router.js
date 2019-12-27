@@ -27,5 +27,19 @@ router.get(`/:id`, (req, res) =>{
     });
 })
 
+// This PUT lets us edit our movie selection and it wiull update our DB witrh the changes.
+router.put('/:id', (req, res) =>{
+    let id = req.params.id;
+    let title = req.body.description
+    let description = req.body.title;
+    const queryText = `UPDATE "movies" SET "title" = $1, "description" = $2 WHERE id = $3;`;
+    pool.query(queryText, [title, description, id]
+        ).then( (result) => {
+            res.sendStatus(200);
+        }).catch( (error) => {
+            console.log(`error updating movie selection`, error);
+            res.sendStatus(500);
+        });
+})
 
 module.exports = router;
