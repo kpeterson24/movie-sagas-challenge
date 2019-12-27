@@ -18,7 +18,8 @@ CREATE TABLE "genres" (
 -- Recall that this Junction Table will just be a table of ids!
 CREATE TABLE "movies_and_genres" (
  "movie_id" INT REFERENCES "movies",
- "genre_id" INT REFERENCES "genres"
+ "genre_id" INT REFERENCES "genres",
+ PRIMARY KEY ("movie_id", "genre_id")
 );
 
 
