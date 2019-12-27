@@ -23,6 +23,7 @@ function* rootSaga() {
     yield takeEvery( `GET_MOVIES`, getMoviesSaga );
     yield takeEvery( `GET_DETAILS`, getDetailsSaga );
     yield takeEvery( `GET_GENRES`, getGenresSaga );
+    yield takeEvery( `EDIT_DETAILS`, editMovieDetailsSaga);
 }
 
 
@@ -62,6 +63,17 @@ function* getGenresSaga(action) {
         console.log('error getting genre data', error);
     }
 
+}
+
+// Saga to edit an existing movie titasle and descrition
+function* editMovieDetailsSaga(action) {
+    let id = action.payload.id;
+    try{
+        yield axios.put(`/movies/${id}`, action.payload);
+    }
+    catch ( error ) {
+        console.log('error updating movie details', error);        
+    }
 }
 
 // END SAGAS // 
