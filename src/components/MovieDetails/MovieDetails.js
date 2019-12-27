@@ -1,31 +1,29 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 class MovieDetails  extends Component {
-    handleDetailsClick = () => {
-        this.props.dispatch({ type: `MOVIE_DETAILS`, payload: this.props.item.id });
-        this.props.history.push('/details/' + this.props.item.id);
+
+    handleDetailsClick = (event, id) => {
+        this.props.dispatch({ type: 'GET_DETAILS', payload: {id: id} });
+        this.props.dispatch({ type: 'GET_GENRES', payload: {id: id} });
     }
     render() {
-
-        // declaring this.props variables
-        const movieTitle = this.props.item.title;
-        const moviePoster = this.props.item.poster;
-        const movieDesc = this.props.item.description;
       
         return(
+            
             <div>
-            <div>
-                {JSON.stringify(this.props.item)}
-                <h2>{movieTitle}</h2>
-                <br/>   
-                <img alt= {movieTitle} src= {moviePoster} onClick={this.handleDetailsClick}></img>
-                <br/>
-                <p>{movieDesc}</p>
+                {/* {JSON.stringify(this.props.reduxStore.movies.title)} */}
+                <h2>{this.props.item.title}</h2> 
+                <Link to="/details">
+                <img alt= {this.props.item.title} src= {this.props.item.poster} 
+                onClick={ ( event ) => this.handleDetailsClick(event, this.props.item.id)} />
+                </Link>
+                <h3>Movie Description</h3>
+                <p>{this.props.item.description}</p>
             </div>
-            </div>
+            
         )
     }
 
@@ -33,5 +31,8 @@ class MovieDetails  extends Component {
 
 }
 
+const  putReduxStateOnProps = ( reduxStore ) => ({
+    reduxStore,
+})
 
-export default withRouter(connect()(MovieDetails));
+export default connect(putReduxStateOnProps)(MovieDetails);

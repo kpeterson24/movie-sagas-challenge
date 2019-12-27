@@ -3,25 +3,36 @@ import {connect} from 'react-redux';
 -
 class MoviePage extends Component {
 
-//mounting
-componentDidMount() {
-    const selectedId = this.props.match.params.selectedId
-    this.props.dispatch({ type: 'SELECTED_MOVIE', payload: selectedId });
-}
+    //button nav
+
+    // home page
+    goHome = () => {
+        this.props.history.push('/');
+    }
+
+    // edit page
+    goEdit = (event, id) => {
+        this.props.history.push('/edit');
+    }
 
     render() {
         <div>
-            {this.props.moviesRedux.map( (movieItem, i) => 
-                <div key={i} >
-                    <h2>{movieItem.title}</h2>
-                    <img alt={movieItem.title} src={movieItem.poster} />
-                    <p>{movieItem.description}</p>
-                    <p>Genre: {movieItem.name}</p>
-                </div>
-            )}
-            <button onClick={ () => this.props.history.push('/')}>Back to Movies</button>
-            {/* Do edit button last */}
-            <button>Edit</button> 
+            {this.props.reduxStore.details.map( (item, i) => {
+                return (
+                    <div key={i}>
+                        <h3>{item.title}</h3>
+                        <p>{item.description}</p>
+                    </div>    
+                )
+            })}
+            <h3>Genres</h3>
+            {this.props.reduxStore.genres.map( (item, i) => {
+                return (
+                    <li key={i}>{item.name}</li>
+                )
+            })}
+            <button onClick = {this.goHome}>Go Home</button>
+            <button onClick ={(event) => this.goEdit(event, this.props.details)} >Edit Movie</button>
         </div>
     }
 
@@ -29,8 +40,8 @@ componentDidMount() {
 
 
 //set a reduxstate to props...
-const  mapReduxStateToProps = reduxState => ({
-    moviesRedux: reduxState.genres
+const  putReduxStateOnProps = reduxStore => ({
+    reduxStore
 })
 
-export default connect(mapReduxStateToProps)(MoviePage);
+export default connect(putReduxStateOnProps)(MoviePage);

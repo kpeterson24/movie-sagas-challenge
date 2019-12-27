@@ -4,7 +4,7 @@ const router = express.Router();
 
 // GET MAH MOVIES from the db...
 router.get('/', (req, res) => {
-    let queryText = 'SELECT * FROM "movies" ORDER BY "title" ASC;;';
+    let queryText = 'SELECT * FROM "movies" ORDER BY "title" ASC;';
     pool.query(queryText).then(result => {
         res.send(result.rows);
     }).catch (error => {

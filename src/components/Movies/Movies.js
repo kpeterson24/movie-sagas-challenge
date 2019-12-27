@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import { withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 import MovieDetails from '../MovieDetails/MovieDetails';
 
@@ -11,9 +10,8 @@ class Movies extends Component {
     }
     render() {
         return (
-            //make sure you actually place your .map into a holding container and not an empty one dumb dumb
             <div>
-                {this.props.moviesRedux.map( (item) => {
+                {this.props.reduxStore.movies.map( (item) => {
                     return (
                         <MovieDetails key ={item.id} item={item} />
                 )})}
@@ -23,9 +21,9 @@ class Movies extends Component {
 
 }
 //set a reduxstate to props...
-const  mapReduxStateToProps = reduxState => ({
-    moviesRedux: reduxState.movies
+const  putReduxStateOnProps = ( reduxStore ) => ({
+    reduxStore,
 })
 
 // export default withRouter(connect(mapReduxStateToProps) (Movies) );
-export default connect(mapReduxStateToProps) (Movies);
+export default connect(putReduxStateOnProps)(Movies);
