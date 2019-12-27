@@ -11,10 +11,9 @@ class Movies extends Component {
     render() {
         return (
             <div>
-                {this.props.reduxStore.movies.map( (item) => {
-                    return (
-                        <MovieDetails key ={item.id} item={item} />
-                )})}
+                {this.props.reduxStore.movies.map( item => (  
+                    <MovieDetails key={item.id} item={item} />                
+                ))}
             </div>
         )
     }
