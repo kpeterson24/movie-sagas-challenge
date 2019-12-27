@@ -55,7 +55,7 @@ function* getDetailsSaga(action) {
 function* getGenresSaga(action) {
     let id = action.payload.id;
     try{
-        const response = yield axios.get(`/movies/${id}`);
+        const response = yield axios.get(`/genres/${id}`);
         yield put({type: 'SET_GENRES', payload: response.data })
     }
     catch ( error ) {
@@ -104,10 +104,10 @@ const genres = (state = [], action) => {
 
 // Create one store that all components can use
 const storeInstance = createStore(
-    combineReducers({
-        details,
+    combineReducers({       
         movies,
         genres,
+        details,
         
     }),
     // Add sagaMiddleware to our store
