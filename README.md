@@ -3,7 +3,7 @@
 Description:
 Your Movie List is an app that allows you to view your list of movies in your personal database! As a user you're able to update and view exact data you included for your movies.
 
-This app uses React, react-redux, react-router-dom and other parts of React framework listed in the installs below.
+This app mainly uses Javascript, React, Redux, and Sagas. For a list of all of the other dependencies, please refer to the package.json file.
 
 Installation
 To install this app, first open in your preferred coding environment.
